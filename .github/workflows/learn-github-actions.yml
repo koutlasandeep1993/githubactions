@@ -8,5 +8,8 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content
+        
       - name: Run build script
-        run: pwd
+        run: python action_python.py
