@@ -2,15 +2,12 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  example-job:
-   runs-on: ubuntu-latest
-   steps:
-    - shell: bash
-      run: |
-        expr 1 + 1 > output.log
-        expr 2 + 8 > output1.log
-    - name: Upload output file
-      uses: actions/upload-artifact@v3
-      with:
-        name: output-log-file
-        path: output.log
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
