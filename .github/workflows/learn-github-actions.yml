@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run build script
-        run: python --version
+        run: python githubactions/action_python.py
         shell: bash
