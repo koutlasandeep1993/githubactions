@@ -8,7 +8,14 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3 # checkout the repository content      
 
         
       - name: Run build script
-        run: python action_python.py
+        run: |
+          python action_python.py
+          pwd
+          python --version
+          echo "you are getting"
+       
