@@ -27,6 +27,7 @@ jobs:
           
 
   example-job-download:
+    needs: example-job
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
