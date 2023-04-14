@@ -90,9 +90,7 @@ jobs:
         id: github_vars_step
         run: echo '${{ toJSON(vars) }}'
         
-      - name: Dump jobs context
-        id: github_jobs_step
-        run: echo '${{ toJSON(jobs) }}' 
+
         
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
