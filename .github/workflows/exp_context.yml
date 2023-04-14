@@ -5,8 +5,34 @@ on:
     branches:
     - main
   workflow_dispatch:
+env:  ##Global
+  mascot: Mona
+  super_duper_var: totally_awesome
   
 jobs:
+  env_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hi Mona ${{ env.mascot }}'  # Hi Mona
+      - run: echo 'Hi Octocat  ${{ env.mascot }}'  # Hi Octocat
+        env:
+          mascot: Octocat #### under run
+  env_job_inside:
+    runs-on: ubuntu-latest
+    env:
+      mascot: sandeep
+    steps:
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi sandeep
+
+
+
+
+
+
+
+
+
+
   example-job:
     
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -17,26 +43,8 @@ jobs:
           echo "github.actor"
           echo ${{ github.actor }}
           
-          echo "github"
-          echo ${{ github }}
-          
-          echo "github.action_path"
-          echo ${{ github.action_path }}
-          
-          echo "github.action_ref"
-          echo ${{ github.action_ref }}
-          
-          echo "github.action_repository"
-          echo ${{ github.action_repository }}
-          
-          echo "github.action_status"
-          echo ${{ github.action_status }}
-          
           echo "github.actor_id"
           echo ${{ github.actor_id }}
-          
-          echo "github.api_url"
-          echo ${{ github.api_url }}
           
           echo "github.ref"
           echo ${{ github.ref }}
@@ -50,26 +58,11 @@ jobs:
           echo "github.event_name"
           echo ${{ github.event_name }}
           
-          echo "github.event_path"
-          echo ${{ github.event_path }}
-          
-          echo "github.graphql_url"
-          echo ${{ github.graphql_url }}
-          
-          echo "github.head_ref"
-          echo ${{ github.head_ref }}
-          
           echo "github.job"
           echo ${{ github.job }}
           
           echo "github.path"
           echo ${{ github.path }}
-          
-          echo "github.token"
-          echo ${{ github.token }}
-          
-          echo "github.repository_owner"
-          echo ${{ github.repository_owner }}
           
           echo "github.ref_name"
           echo ${{ github.ref_name }}
@@ -89,8 +82,6 @@ jobs:
       - name: Dump vars context
         id: github_vars_step
         run: echo '${{ toJSON(vars) }}'
-        
-
         
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
