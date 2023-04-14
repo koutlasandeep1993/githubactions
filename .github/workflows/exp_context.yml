@@ -1,5 +1,5 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: learn-github-actions-exp-context
+run-name: ${{ github.actor }} is exp context GitHub Actions
 on:
   push:
     branches:
@@ -8,7 +8,11 @@ on:
   
 jobs:
   example-job:
+    
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - run: |
+          echo "Deploying to production server on branch $GITHUB_REF"
+          echo ${{ github.actor }}
+          echo ${{ github }}
