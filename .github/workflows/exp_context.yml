@@ -5,99 +5,97 @@ on:
     branches:
     - main
   workflow_dispatch:
-env:  ##Global
+env:  ##Global  Workflow level
   mascot: Mona
   super_duper_var: totally_awesome
+  env_var: ${{vars.SANDEEP_ENV_VAR_NAME}}
+  
+#######  Envirnment
   
 jobs:
   env_job:
     runs-on: ubuntu-latest
     steps:
+      - run: echo 'SANDEEP_ENV_VAR_NAME  value is  ${{vars.SANDEEP_ENV_VAR_NAME}}  and  ${{vars.SANDEEP_REPO_NAME}} and and  ${{vars.SANDEEP_ENV_NAME}}'
       - run: echo 'Hi Mona ${{ env.mascot }}'  # Hi Mona
-      - run: echo 'Hi Octocat  ${{ env.mascot }}'  # Hi Octocat
+      - run: echo 'Hi Octocat  ${{ env.mascot }}'  # Hi Octocat Step level
         env:
           mascot: Octocat #### under run
   env_job_inside:
     runs-on: ubuntu-latest
     env:
-      mascot: sandeep
+      mascot: sandeep  ## Job level
     steps:
       - run: echo 'Hi ${{ env.mascot }}'  # Hi sandeep
+      
 
+#######  contexts
 
-
-
-
-
-
-
-
-
-  example-job:
+#   example-job:
     
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "Deploying to production server on branch $GITHUB_REF"
-          echo "github.actor"
-          echo ${{ github.actor }}
+#     if: ${{ github.ref == 'refs/heads/main' }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#           echo "Deploying to production server on branch $GITHUB_REF"
+#           echo "github.actor"
+#           echo ${{ github.actor }}
           
-          echo "github.actor_id"
-          echo ${{ github.actor_id }}
+#           echo "github.actor_id"
+#           echo ${{ github.actor_id }}
           
-          echo "github.ref"
-          echo ${{ github.ref }}
+#           echo "github.ref"
+#           echo ${{ github.ref }}
           
-          echo "github.env"
-          echo ${{ github.env }}
+#           echo "github.env"
+#           echo ${{ github.env }}
           
-          echo "github.event"
-          echo ${{ github.event }}
+#           echo "github.event"
+#           echo ${{ github.event }}
           
-          echo "github.event_name"
-          echo ${{ github.event_name }}
+#           echo "github.event_name"
+#           echo ${{ github.event_name }}
           
-          echo "github.job"
-          echo ${{ github.job }}
+#           echo "github.job"
+#           echo ${{ github.job }}
           
-          echo "github.path"
-          echo ${{ github.path }}
+#           echo "github.path"
+#           echo ${{ github.path }}
           
-          echo "github.ref_name"
-          echo ${{ github.ref_name }}
+#           echo "github.ref_name"
+#           echo ${{ github.ref_name }}
           
 
-  dump_contexts_to_log:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+#   dump_contexts_to_log:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Dump GitHub context
+#         id: github_context_step
+#         run: echo '${{ toJSON(github) }}'
         
-      - name: Dump env context
-        id: github_env_step
-        run: echo '${{ toJSON(env) }}'
+#       - name: Dump env context
+#         id: github_env_step
+#         run: echo '${{ toJSON(env) }}'
         
-      - name: Dump vars context
-        id: github_vars_step
-        run: echo '${{ toJSON(vars) }}'
+#       - name: Dump vars context
+#         id: github_vars_step
+#         run: echo '${{ toJSON(vars) }}'
         
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
+#       - name: Dump job context
+#         run: echo '${{ toJSON(job) }}'
         
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
+#       - name: Dump steps context
+#         run: echo '${{ toJSON(steps) }}'
         
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
+#       - name: Dump runner context
+#         run: echo '${{ toJSON(runner) }}'
         
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
+#       - name: Dump strategy context
+#         run: echo '${{ toJSON(strategy) }}'
         
-      - name: Dump matrix context
-        id: github_matrix_step
-        run: echo '${{ toJSON(matrix) }}'          
+#       - name: Dump matrix context
+#         id: github_matrix_step
+#         run: echo '${{ toJSON(matrix) }}'          
         
-      - name: Dump needs context
-        run: echo '${{ toJSON(needs) }}'        
+#       - name: Dump needs context
+#         run: echo '${{ toJSON(needs) }}'        
