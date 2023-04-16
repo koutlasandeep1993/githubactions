@@ -1,0 +1,13 @@
+name: github-variables
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  push:
+    branches:
+    - main
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'SANDEEP_ENV_VAR_NAME  value is  ${{secrets.SANDEEP_ENV_NAME}}'
+      - run: echo  'vars.SANDEEP_REPO_NAME value is ${{vars.SANDEEP_REPO_NAME}} '
+      - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{secrets.SANDEEP_ENV_NAME}}'
