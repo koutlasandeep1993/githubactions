@@ -14,6 +14,6 @@ jobs:
       - name: Build
         id: build_step
         run: |
-          echo "my build is completed {{ $BUILD_ID }}"
+          echo "my build is completed {{ $$BUILD_ID }}"
           echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
-          echo "$GITHUB_OUTPUT   and $build_id"
+          echo "$$GITHUB_OUTPUT   and $$build_id"
