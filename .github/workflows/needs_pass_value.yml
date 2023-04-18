@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         id: build_step
-        run: |
-          echo "my build is completed {{ $$BUILD_ID }}"
-          echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
-          echo "$$GITHUB_OUTPUT   and $$build_id"
+      - run: echo "my build is completed {{ $$BUILD_ID }}"
+      - run: echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
+      - run:  echo "$$GITHUB_OUTPUT   and $$build_id"
