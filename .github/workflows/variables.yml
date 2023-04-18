@@ -13,4 +13,4 @@ jobs:
     steps:
        - run: echo 'SANDEEP_ENV_VAR_NAME  value is   ${{ secrets.SANDEEP_ENV_NAME }}'
        - run: echo  'vars.SANDEEP_REPO_NAME value is ${{ vars.SANDEEP_REPO_NAME }} '
-       - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ vars.SANDEEP_ENV_VAR_NAME }}'
+       - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ env.SANDEEP_ENV_VAR_NAME }}'
