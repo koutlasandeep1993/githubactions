@@ -11,9 +11,9 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-       - run: echo $sandeep'
-         env:
+      - run: echo $sandeep
+        env:
           sandeep: ${{ secrets.SANDEEP_ENV_NAME }}
-       - run: echo  'vars.SANDEEP_REPO_NAME value is ${{ vars.SANDEEP_REPO_NAME }} '
-       - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ env.SANDEEP_ENV_VAR_NAME }}'
-       - run: env
+      - run: echo  'vars.SANDEEP_REPO_NAME value is ${{ vars.SANDEEP_REPO_NAME }} '
+      - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ env.SANDEEP_ENV_VAR_NAME }}'
+  
