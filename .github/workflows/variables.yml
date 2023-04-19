@@ -12,9 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if [ "$sandeep" == "candy" ]
+          if [ "$sandeep" == "sandeepk" ]
           then
             echo "got secrets"
+          fi  
         env:
           sandeep: ${{ secrets.SANDEEP_ENV_NAME }}
       - run: echo  '$repo_name'
