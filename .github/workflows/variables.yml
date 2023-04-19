@@ -12,7 +12,7 @@ jobs:
     environment: production
     steps:
       - run: |
-          if [ "$sandeep" == "prod_env_secrets" ]
+          if [ ${{ secrets.CANDY_SECRET }} == "candy" ]
           then
             echo "got Environment secrets ${{ secrets.PROD_ENV_SECRETS }}"
             echo "got Environment variables ${{ vars.PROD_VAR_SECRETS }}"
@@ -20,5 +20,5 @@ jobs:
             echo "Repository secrets ${{ secrets.CANDY_SECRET }}"
           fi  
         env:
-          sandeep: ${{ secrets.PROD_ENV_SECRETS }}
+          sandeep: ${{ secrets.CANDY_SECRET }}
 
