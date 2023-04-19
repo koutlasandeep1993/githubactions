@@ -4,7 +4,7 @@ run-name: github variables
 on:
   push:
     branches:
-      - main
+      - master
    
 jobs:
   example-job:
@@ -16,7 +16,7 @@ jobs:
           then
             echo "got Environment secrets ${{ secrets.PROD_ENV_SECRETS }}"
             echo "got Environment variables ${{ vars.PROD_VAR_SECRETS }}"
-            echo "Repository variables $vars.SANDEEP_REPO_NAME"
+            echo "Repository variables ${{ vars.SANDEEP_REPO_NAME }}"
             echo "Repository secrets ${{ secrets.CANDY_SECRET }}"
           fi  
         env:
