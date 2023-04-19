@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if [ "$sandeep" == "ssss" ]
+          if [ "$sandeep" == "candy" ]
           then
             echo "got secrets"
           fi  
         env:
-          sandeep: ${{ secrets.SANDEEP_ENV_NAME }}
+          sandeep: ${{ secrets.CANDY_SECRET }}
 
