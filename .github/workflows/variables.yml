@@ -9,12 +9,13 @@ on:
 jobs:
   example-job:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - run: |
-          if [ "$sandeep" == "candy" ]
+          if [ "$sandeep" == "prod_env_secrets" ]
           then
             echo "got secrets"
           fi  
         env:
-          sandeep: ${{ secrets.CANDY_SECRET }}
+          sandeep: ${{ secrets.PROD_ENV_SECRETS }}
 
