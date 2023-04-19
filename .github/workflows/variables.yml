@@ -15,9 +15,9 @@ jobs:
           if [ "$sandeep" == "prod_env_secrets" ]
           then
             echo "got Environment secrets ${{ secrets.PROD_ENV_SECRETS }}"
-            echo "got Environment variables {{vars.PROD_VAR_SECRETS}}"
-            echo "Repository variables {{vars.SANDEEP_REPO_NAME}}"
-            echo "Repository secrets {{secrets.CANDY_SECRET}}"
+            echo "got Environment variables ${{ vars.PROD_VAR_SECRETS }}"
+            echo "Repository variables ${{ vars.SANDEEP_REPO_NAME }}"
+            echo "Repository secrets ${{ secrets.CANDY_SECRET }}"
           fi  
         env:
           sandeep: ${{ secrets.PROD_ENV_SECRETS }}
