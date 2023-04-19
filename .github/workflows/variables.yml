@@ -12,7 +12,7 @@ jobs:
     environment: production
     steps:
       - run: |
-          if [ ${{ secrets.CANDY_SECRET }} == "candy" ]
+          if [ ${{ secrets.CANDY_SECRET }} == "cany" ]
           then
             echo "got Environment secrets ${{ secrets.PROD_ENV_SECRETS }}"
             echo "got Environment variables ${{ vars.PROD_VAR_SECRETS }}"
