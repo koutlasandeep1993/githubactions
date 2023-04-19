@@ -1,23 +1,20 @@
 name: github-variables
 run-name: github variables
-env:
-  repo_name: ${{ vars.SANDEEP_REPO_NAME }}
+
 on:
   push:
     branches:
       - main
-  workflow_dispatch:     
+   
 jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          if [ "$sandeep" == "sandeepk" ]
+          if [ "$sandeep" == "ssss" ]
           then
             echo "got secrets"
           fi  
         env:
           sandeep: ${{ secrets.SANDEEP_ENV_NAME }}
-      - run: echo  '$repo_name'
-      - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ env.SANDEEP_ENV_VAR_NAME }}'
-  
+
