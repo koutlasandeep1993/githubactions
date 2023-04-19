@@ -1,7 +1,7 @@
 name: github-variables
-run-name: ${{ github.actor }} is learning GitHub Actions
-env: 
-  EZORED_AWS_KEY_ID: ${{ secrets.SANDEEP_ENV_NAME }}
+run-name: github variables
+env:
+  repo_name: ${{ vars.SANDEEP_REPO_NAME }}
 on:
   push:
     branches:
@@ -11,9 +11,12 @@ jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $sandeep
+      - run: |
+          if [ "$sandeep" == "candy" ]
+          then
+            echo "got secrets"
         env:
           sandeep: ${{ secrets.SANDEEP_ENV_NAME }}
-      - run: echo  'vars.SANDEEP_REPO_NAME value is ${{ vars.SANDEEP_REPO_NAME }} '
+      - run: echo  '$repo_name'
       - run: echo 'secrets.SANDEEP_ENV_NAME value is  ${{ env.SANDEEP_ENV_VAR_NAME }}'
   
